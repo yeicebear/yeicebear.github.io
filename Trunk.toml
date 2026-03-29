@@ -1,0 +1,4 @@
+[build]
+target = "src/index.html"
+dist = "dist"
+public_url = "/"

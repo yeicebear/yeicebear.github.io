@@ -7,6 +7,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -15,11 +17,14 @@ jobs:
         with:
           targets: wasm32-unknown-unknown
 
-      - name: Install Trunk
-        run: cargo install trunk
+      - name: Download Trunk
+        run: |
+          wget -qO- https://github.com/trunk-rs/trunk/releases/latest/download/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
+          chmod +x trunk
+          sudo mv trunk /usr/local/bin/
 
       - name: Build
-        run: trunk build --release
+        run: trunk build --release --public-url "/"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
