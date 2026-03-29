@@ -1,0 +1,11 @@
+[package]
+name = "portfolio"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+leptos = { version = "0.6", features = ["csr"] }
+
+[profile.release]
+opt-level = "z"
+lto = true
