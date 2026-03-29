@@ -24,7 +24,7 @@ jobs:
           sudo mv trunk /usr/local/bin/
 
       - name: Build
-        run: trunk build src/index.html --release --public-url "/"
+        run: trunk build index.html --release --public-url "/"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
